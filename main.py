@@ -23,4 +23,9 @@ db = Chroma.from_documents(
     persist_directory="emb",
 )
 
-print(docs)
+results = db.similarity_search_with_score("What is an interesting fact about the English language?")
+
+for result in results:
+    print(f"\n")
+    print(result[1])
+    print(result[0].page_content)
